@@ -249,7 +249,13 @@ A: 减小搜索范围，或增加系统内存
 
 ## 📄 许可证
 
-本项目仅供学习和个人使用。使用本工具时请遵守相关法律法规，作者不承担因使用本工具造成的任何损失。
+本项目采用 **GNU Affero General Public License v3.0 (AGPL-3.0)** 授权。
+
+- 当您修改并部署或以网络服务形式提供本项目时，您必须在同等许可下对外提供完整源代码。
+- 详见本仓库根目录的 `LICENSE` 文件。
+
+致谢（Attribution）：
+- 本项目基于 [Amulet-Core](https://github.com/Amulet-Team/Amulet-Core) 提供的底层读写能力进行世界数据的操作与保存，特此感谢其开源生态与文档支持。[Amulet-Core GitHub 仓库](https://github.com/Amulet-Team/Amulet-Core)
 
 ---
 
