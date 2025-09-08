@@ -117,20 +117,20 @@ class LandDataReader:
             print(f"获取所有领地数据时发生错误: {str(e)}")
             return []
     
-    def get_player_lands(self, player_uuid: str) -> List[Dict[str, Any]]:
+    def get_player_lands(self, player_xuid: str) -> List[Dict[str, Any]]:
         """
         获取特定玩家拥有的所有领地
         
         Args:
-            player_uuid (str): 玩家UUID
+            player_xuid (str): 玩家XUID
             
         Returns:
             List[Dict[str, Any]]: 该玩家拥有的所有领地信息
         """
         try:
             results = self._execute_query(
-                "SELECT * FROM lands WHERE owner_uuid = ? ORDER BY land_id",
-                (player_uuid,)
+                "SELECT * FROM lands WHERE owner_xuid = ? ORDER BY land_id",
+                (player_xuid,)
             )
             
             processed_lands = []
@@ -237,7 +237,7 @@ class LandDataReader:
             
             # 各玩家领地数排行
             player_stats = self._execute_query(
-                "SELECT owner_uuid, COUNT(*) as count FROM lands GROUP BY owner_uuid ORDER BY count DESC LIMIT 10"
+                "SELECT owner_xuid, COUNT(*) as count FROM lands GROUP BY owner_xuid ORDER BY count DESC LIMIT 10"
             )
             
             return {
@@ -311,7 +311,7 @@ def demo_usage():
         print(f"   各维度领地数: {stats.get('lands_by_dimension', {})}")
         print(f"   拥有领地最多的前10位玩家:")
         for owner in stats.get('top_land_owners', [])[:5]:
-            print(f"     UUID: {owner['owner_uuid'][:8]}... - 领地数: {owner['count']}")
+            print(f"     XUID: {owner['owner_xuid'][:8]}... - 领地数: {owner['count']}")
         print()
         
         # 2. 获取所有领地（显示前5个）
@@ -319,7 +319,7 @@ def demo_usage():
         all_lands = reader.get_all_lands()
         for i, land in enumerate(all_lands[:5]):
             print(f"   领地 #{land['land_id']}: {land['land_name']}")
-            print(f"     拥有者: {land['owner_uuid'][:8]}...")
+            print(f"     拥有者: {land['owner_xuid'][:8]}...")
             print(f"     维度: {land['dimension']}")
             print(f"     坐标: ({land['min_x']}, {land['min_z']}) 到 ({land['max_x']}, {land['max_z']})")
             print(f"     面积: {land['area']} 方块")

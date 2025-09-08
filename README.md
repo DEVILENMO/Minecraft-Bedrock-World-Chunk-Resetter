@@ -109,7 +109,7 @@ ARC-Chunk-Auto-Reseter/
 -- 建议的表结构（SQLite）
 CREATE TABLE IF NOT EXISTS lands (
   land_id               INTEGER PRIMARY KEY,   -- 领地ID
-  owner_uuid            TEXT NOT NULL,         -- 拥有者UUID
+  owner_xuid            TEXT NOT NULL,         -- 拥有者XUID
   land_name             TEXT NOT NULL,         -- 领地名称
   dimension             TEXT NOT NULL,         -- 维度: Overworld/Nether/TheEnd
   min_x                 INTEGER NOT NULL,      -- 边界最小X（方块坐标）
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS lands (
 
 字段含义与要求：
 - land_id: 整数主键，唯一标识一个领地
-- owner_uuid: 拥有者玩家UUID（字符串）
+- owner_xuid: 拥有者玩家XUID（字符串）
 - land_name: 领地名称（字符串）
 - dimension: 维度名称，需为以下三者之一：`Overworld`、`Nether`、`TheEnd`
 - min_x/max_x/min_z/max_z: 领地边界在方块坐标系中的包围盒（包含端点）

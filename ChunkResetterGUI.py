@@ -347,7 +347,7 @@ class ChunkResetterGUI:
         for land in self.lands_data:
             land_id = land['land_id']
             name = land['land_name']
-            owner = land['owner_uuid'][:8] + "..."  # 显示UUID前8位
+            owner = land['owner_xuid'][:8] + "..."  # 显示XUID前8位
             
             # 坐标范围
             coord_range = f"({land['min_x']}, {land['min_z']}) - ({land['max_x']}, {land['max_z']})"
